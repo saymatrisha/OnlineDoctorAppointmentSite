@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.appoinment;
 
 import java.io.IOException;
@@ -26,3 +27,33 @@ public class AdminLogoutServlet extends HttpServlet {
 	}
 
 }
+=======
+package com.appoinment;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+public class AdminLogoutServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 response.setContentType("text/html");  
+         PrintWriter out=response.getWriter();  
+         
+         HttpSession session=request.getSession();  
+         session.invalidate();  
+         request.setAttribute("logoutmsg", "You are successfully logged out!");
+         request.getRequestDispatcher("AdminLogin.jsp").forward(request, response);
+ 
+         out.close();  
+	}
+
+}
+>>>>>>> d01e5e757c1897f8d69679912d5322d15bcd199d
