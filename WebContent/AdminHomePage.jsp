@@ -42,7 +42,7 @@
         			<li class="selected"><a href="index.html">Home</a></li>
                   <li>
 
-					<a href="#">My Profile</a>
+					<a href="#">View Services</a>
             				
 					<ul>
                 				<li><a href="ManageDoc.jsp">View Doctors</a></li>
@@ -50,7 +50,7 @@
                    				
                 			</ul></li>
                      
-				<li><a href="#">LogOut</a></li>
+				<li><a href="AdminLogoutServlet">LogOut</a></li>
        			</ul>
 
 			<div class="clear"></div>

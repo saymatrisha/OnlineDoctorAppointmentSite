@@ -20,7 +20,7 @@ public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 	  try {
-		    PreparedStatement pSt = ds.getConnection().prepareStatement("SELECT  doctors_info.doc_id, doctors_info.email, doctors_info.degree, doctors_info.department, doctors_info.location from doctors_info INNER JOIN doc_dept ON doctors_info.department=doc_dept.dept_name WHERE department=?");
+		    PreparedStatement pSt = ds.getConnection().prepareStatement("SELECT  doctors_info.doc_id, doctors_info.email, doctors_info.degree, doctors_info.department, doctors_info.location, doctors_info.time_id from doctors_info");
 			pSt.setString(1, request.getParameter("department"));
 			
 			 ResultSet rs = pSt.executeQuery();
@@ -30,6 +30,7 @@ public class SearchServlet extends HttpServlet {
 				 session.setAttribute("degree", rs.getString(3));
 				 session.setAttribute("department", rs.getString(4));
 				 session.setAttribute("location", rs.getString(5));
+				 session.setAttribute("time_id", rs.getInt(9));
 				 session.setAttribute("doc_id", rs.getString(1));
 				 response.sendRedirect("PatiHomePage.jsp");
 				 

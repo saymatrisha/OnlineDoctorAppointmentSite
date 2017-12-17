@@ -70,6 +70,7 @@ public class DocSaveServlet extends HttpServlet {
 				 }  
 				    }
 				 rs.close();
+				 
 
 		}catch(Exception ex){
 			ex.printStackTrace();

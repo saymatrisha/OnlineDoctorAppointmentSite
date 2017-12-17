@@ -19,6 +19,8 @@
  <div class="form-group margin-right-5 col-sm-4 col-sm-offset-4">
  <% 
  String pid = (String)session.getAttribute("pati_id"); 
+ int docID =(Integer)session.getAttribute("docID");
+ int timeID =(Integer)session.getAttribute("timeID");
  
  try{
 	 InitialContext initialContext = new InitialContext();
@@ -33,7 +35,7 @@
      }
      String id = request.getParameter("ID");
      
-     PreparedStatement pSt = ds.getConnection().prepareStatement("update patient_reg set doc_id=? WHERE pati_id=?");
+     PreparedStatement pSt = ds.getConnection().prepareStatement("");
      pSt.setString(1, request.getParameter("ID"));
      pSt.setString(2, "pid");
      int update = pSt.executeUpdate();

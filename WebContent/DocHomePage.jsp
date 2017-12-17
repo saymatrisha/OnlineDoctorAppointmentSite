@@ -46,8 +46,8 @@
             				
 					<ul>
                 				<li><a href="DocViewProfile.jsp">View Profile</a></li>
-                   				<li><a href="#">Edit Profile</a></li>
-                   				<li><a href="#">Product Three</a></li>
+                   				<li><a href="DocUpdate.jsp">Edit Profile</a></li>
+                   				
                 			</ul></li>
                      
 				<li><a href="DocLogoutServlet">LogOut</a></li>
@@ -78,6 +78,7 @@ if(message1!=null){
 	out.println(message1);
 }
 %>
+<%String doc_id = (String)session.getAttribute("doc_id"); %>
 </h3></center>
 </div>
 <div class="clear"></div>
@@ -90,7 +91,8 @@ if(message1!=null){
                     <ul class="blocklist">
                         <li><a class="selected" href="#">Messages</a></li>
                         <li><a href="DocAvailability.jsp">Provide Additional Information</a></li>
-                        <li><a href="#">View Appointment</a></li>
+                        <li><a href="ViewDoctorsSchedule.jsp">View My schedule</a></li>
+                        <li><a href="ViewPatiList.jsp">View Patient List</a></li>
                     </ul>
                 </li>
       

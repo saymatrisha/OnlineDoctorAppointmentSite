@@ -32,7 +32,7 @@
 			
         			<li class="selected"><a href="index.html">Home</a></li>
 
-	     			<li><a href="#">Services</a></li>
+	     			
             
 				<li><a href="#">Contact</a></li>
        			</ul>
@@ -81,7 +81,6 @@ out.println(msg1);
   </div>
  </div>
 </div>
-</body>
 <footer>
         <div class="footer-content width">
             
@@ -91,4 +90,6 @@ out.println(msg1);
             <p>&copy; OurSite 2017. <a href="#">OnlineAppointmentSystem</a></p>
          </div>
     </footer>
+</body>
+
 </html>

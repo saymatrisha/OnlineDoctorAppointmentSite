@@ -144,13 +144,46 @@
     <url-pattern>/searchDocServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>AdLoginServlet</display-name>
     <servlet-name>AdLoginServlet</servlet-name>
     <servlet-class>com.appoinment.AdLoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdLoginServlet</servlet-name>
     <url-pattern>/adminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RequestServlet</servlet-name>
+    <servlet-class>com.appoinment.RequestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestServlet</servlet-name>
+    <url-pattern>/requestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewPatiListServlet</display-name>
+    <servlet-name>ViewPatiListServlet</servlet-name>
+    <servlet-class>com.appoinment.ViewPatiListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewPatiListServlet</servlet-name>
+    <url-pattern>/ViewPatiListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AcceptServlet</servlet-name>
+    <servlet-class>com.appoinment.AcceptServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AcceptServlet</servlet-name>
+    <url-pattern>/acceptPatiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+   
+    <servlet-name>AdminLogoutServlet</servlet-name>
+    <servlet-class>com.appoinment.AdminLogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLogoutServlet</servlet-name>
+    <url-pattern>/AdminLogoutServlet</url-pattern>
   </servlet-mapping>
 </web-app>

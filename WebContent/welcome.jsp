@@ -10,5 +10,18 @@
 </head>
 <body>
 <h2>Successfully inserted</h2>
+<%
+try{
+	 String accept = (String)session.getAttribute("req");
+	 out.println(accept);
+	 
+	 int timeId =(Integer)session.getAttribute("timeID");
+	 out.println(timeId);
+	
+}catch(Exception e){
+	e.printStackTrace();
+	
+}
+%>
 </body>
 </html>

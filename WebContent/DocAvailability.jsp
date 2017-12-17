@@ -72,8 +72,8 @@
 	    	<nav>
     			<ul class="sf-menu dropdown sf-js-enabled sf-shadow">
         			<li class="selected"><a href="DocHomePage.jsp">Home</a></li>
-        			<li><a href="#">Services</a></li>
-				<li><a href="#">Logout</a></li>
+        			
+				<li><a href="DocLogoutServlet">Logout</a></li>
        			</ul>
 			<div class="clear"></div>
     		</nav>
@@ -123,9 +123,6 @@
  <div class="form-group margin-right-5 col-sm-4 col-sm-offset-4">
           <input id="end"  name="end"  placeholder="End time" style="width: 100%;" />
  </div>
- 
- 
-  
  
    <div class="form-group margin-right-5 col-sm-4 col-sm-offset-4">
        <button class="btn btn-lg btn-primary btn-block" type="submit">Send</button>  

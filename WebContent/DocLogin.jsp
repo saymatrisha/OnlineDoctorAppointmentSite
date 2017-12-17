@@ -32,8 +32,6 @@
 			
         			<li class="selected"><a href="index.html">Home</a></li>
 
-	     			<li><a href="#">Services</a></li>
-            
 				<li><a href="#">Contact</a></li>
        			</ul>
 
@@ -46,16 +44,19 @@
     </header>
  
   
-    <div class="wrapper">
+ <div class="wrapper">
 <div><center><% String logoutmsg = (String)request.getAttribute("logoutmsg");
  if(logoutmsg!=null){
  out.println(logoutmsg);
  }
            
- %></center></div>    
-    
+ %></center></div>  
+
+   <div><h2 class="text-center">Login</h2></div>
+   
+   
     <form class="form-group margin-right-5" action="loginServlet" method="post">       
-      <h2 class="text-center">Login</h2>
+     
       <div class="form-group margin-right-5 col-md-4 col-md-offset-4">
          <input type="text" class="form-control" name="username" placeholder="username" value="<%String un = request.getParameter("username");
         		 if(un!=null){
@@ -86,14 +87,18 @@
             
       </div>
       </form>
-     
+      
+   
     <div class="col-md-4 col-md-offset-4">
     <p class="login-form__footer text-center">
       Don't have an account? <a class="js-join-link" href="DocReg.jsp">Join</a>
      </p>
   </div>
+   
  </div>
- <footer>
+
+</div>
+<footer>
         <div class="footer-content width">
             
             <div class="clear"></div>
@@ -102,7 +107,6 @@
             <p>&copy; OurSite 2017. <a href="#">OnlineAppointmentSystem</a></p>
          </div>
  </footer>
-</div>
 </body>
 
 </html>

@@ -35,8 +35,7 @@
 	    	<nav>
     			<ul class="sf-menu dropdown sf-js-enabled sf-shadow">
         			<li class="selected"><a href="index.html">Home</a></li>
-        			<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+        		
        			</ul>
 			<div class="clear"></div>
     		</nav>

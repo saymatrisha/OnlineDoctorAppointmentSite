@@ -27,7 +27,7 @@ public class DocLoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		try{
-			 PreparedStatement pSt = ds.getConnection().prepareStatement("select * from doctors_reg where username=? and Password=?");
+			  PreparedStatement pSt = ds.getConnection().prepareStatement("select * from doctors_reg where username=? and Password=?");
 			  pSt.setString(1, name);
 			  pSt.setString(2, pass);
 			  ResultSet rs = pSt.executeQuery();
@@ -43,7 +43,7 @@ public class DocLoginServlet extends HttpServlet {
 				 session.setAttribute("conno", rs.getString(9));
 				 session.setAttribute("gender", rs.getString(10));
 				
-				 session.setAttribute("id", rs.getString(11));
+				 session.setAttribute("doc_id", rs.getString(11));
 				 response.sendRedirect("DocHomePage.jsp?Id="+rs.getString(11)+"");
 			 }
 			 else {

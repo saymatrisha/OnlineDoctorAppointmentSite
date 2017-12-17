@@ -38,18 +38,10 @@
 	    	<nav>
     			<ul class="sf-menu dropdown sf-js-enabled sf-shadow">
         			
-        			<li class="selected"><a href="index.html">Home</a></li>
-                   <li>
-
-					<a href="#">My Profile</a>
-            				
-					<ul>
-                				<li><a href="PatiViewProfile.jsp">View Profile</a></li>
-                   				<li><a href="PatiUpdate.jsp">Edit Profile</a></li>
-                   				
-                			</ul></li>
+        			<li class="selected"><a href="DocHomePage.jsp">Home</a></li>
+                  
                      
-				<li><a href="PatiLogoutServlet">LogOut</a></li>
+				<li><a href="DocLogoutServlet">LogOut</a></li>
        			</ul>
 			<div class="clear"></div>
     		</nav>
@@ -59,30 +51,11 @@
  </header>
  <%String id = (String)session.getAttribute("pati_id"); %>  
  <div class="wrapper">
-<center><h3><% 
- String message =(String)request.getAttribute("sumsg");
-  if(message!=null){
-	out.println(message);
-  }
-	%></h3></center>
-	
-  <aside><h3>Welcome :: <%=id%></h3></aside>
-   <center><h3><% 
- String message1 =(String)request.getAttribute("msg");
-if(message1!=null){
-	out.println(message1);
-}
-String message2 =(String)request.getAttribute("requestMsg");
-if(message2!=null){
-	out.println(message2);
-}
-%>
-</h3></center>
+
+  
 <form class= "form-group margin-right-5" action="PatiHomePage.jsp" method="post">
 <div class="form-group margin-right-5 col-sm-4 col-sm-offset-4">
-          <Strong>Search for Doctors:</Strong>
-          <select class="form-control" name="department" onchange="this.form.submit();">
-          <option value="0">Select Department</option>
+          
          <% 
          try{
         	 InitialContext initialContext = new InitialContext();
@@ -96,16 +69,13 @@ if(message2!=null){
                  throw new SQLException("Error establishing connection!");
              }
         	 
-             String query = "SELECT dept_name FROM doc_dept";
+             String query = "SELECT doc_id FROM doctors_info";
              PreparedStatement statement = connection.prepareStatement(query);
              ResultSet rs = statement.executeQuery();
-
-             while (rs.next())
+             while(rs.next())
              {
-               %>
-               <option value="<%= rs.getString("dept_name") %>"><%= rs.getString("dept_name")%></option>
-               
-               <% 
+            	session.setAttribute("docID", rs.getInt(1));
+            	
              }
              rs.close();
              connection.close();
@@ -115,24 +85,28 @@ if(message2!=null){
          }
      
          %>
-          </select>
+          
   </div>
- <div class="table-responsive" align="center">
+  <div class="table-responsive" align="center">
  <table class="table table-bordered table-striped" style="width: 50%" align="center">
  <tr>
+ <th style="width: 15%">First Name</th>
+ <th style="width: 15%">Last Name</th>
  <th style="width: 15%">Email</th>
- <th style="width: 15%">Degree</th>
- <th style="width: 15%">Department</th>
- <th style="width: 15%">Location</th>
- <th style="width: 50%">Available Day</th>
+ <th style="width: 15%">DOB</th>
+ <th style="width: 50%">Gender</th>
+ <th style="width: 15%">Day</th>
  <th style="width: 15%">From</th>
  <th style="width: 15%">To</th>
- <th style="width: 15%">Get Appointment</th>
+ <th style="width: 15%">Request</th>
+ <th style="width: 15%">Appointment</th>
  </tr>
- 
- 
-    <%
+ <%
       try{
+    	  int timeId =(Integer)session.getAttribute("timeID");
+    	  int docId = (Integer)session.getAttribute("docID");
+    	  String patiId =(String)session.getAttribute("patiID");
+    	
     	  InitialContext initialContext = new InitialContext();
           Context context = (Context) initialContext.lookup("java:comp/env");
           //The JDBC Data source that we just created
@@ -143,27 +117,28 @@ if(message2!=null){
           {
               throw new SQLException("Error establishing connection!");
           }
-            PreparedStatement pSt = ds.getConnection().prepareStatement("SELECT  doctors_info.doc_id, doctors_info.email, doctors_info.degree, doctors_info.department, doctors_info.location, doctors_info.day, doctors_info.start_time, doctors_info.end_time, doctors_info.time_id  from doctors_info INNER JOIN doc_dept ON doctors_info.department=doc_dept.dept_name WHERE department=?");
-			pSt.setString(1, request.getParameter("department"));
-			
+            PreparedStatement pSt = ds.getConnection().prepareStatement("SELECT patient_reg.firstname, patient_reg.lastname, patient_reg.email, patient_reg.dob, patient_reg.gender,patient_reg.pati_id, approve.pati_id, approve.doc_id, approve.time_id,approve.request, doctors_info.doc_id,doctors_info.day, doctors_info.start_time,doctors_info.end_time, doctors_info.time_id FROM patient_reg INNER JOIN approve ON approve.pati_id = patient_reg.pati_id INNER JOIN doctors_info ON doctors_info.doc_id = approve.doc_id WHERE doctors_info.doc_id=?");
+		   
+            pSt.setInt(1, docId);
+           
 			ResultSet rset = pSt.executeQuery();
 
             while (rset.next())
             {
-            	
-            	session.setAttribute("docID", rset.getInt(1));
-            	session.setAttribute("timeID", rset.getInt(9));
+            
             %>
               
              <tr>
+               <td><%=rset.getString("firstname") %></td>
+               <td><%=rset.getString("lastname") %></td>
                <td><%=rset.getString("email") %></td>
-               <td><%=rset.getString("degree") %></td>
-               <td><%=rset.getString("department") %></td>
-               <td><%=rset.getString("location") %></td>
+               <td><%=rset.getString("dob") %></td>
+               <td><%=rset.getString("gender") %></td>
                <td><%=rset.getString("day") %></td>
                <td><%=rset.getString("start_time") %></td>
                <td><%=rset.getString("end_time") %></td>
-               <td><a href="requestServlet?ID=<%=rset.getInt(9)%>">SEND</a></td>
+               <td><%=rset.getString("request") %></td>
+               <td><a href="AcceptPatient.jsp?ID=<%=rset.getInt("time_id")%>">Accept</a>||<a href="#">Decline</a></td>
                
              </tr>
              

@@ -32,9 +32,6 @@
 			
         			<li class="selected"><a href="index.html">Home</a></li>
 
-	     			<li><a href="#">Services</a></li>
-            
-				<li><a href="#">Contact</a></li>
        			</ul>
 
 			<div class="clear"></div>
@@ -65,5 +62,14 @@
     
  </div>
 </div>
+<footer>
+        <div class="footer-content width">
+            
+            <div class="clear"></div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; OurSite 2017. <a href="#">OnlineAppointmentSystem</a></p>
+         </div>
+ </footer>
 </body>
 </html>
